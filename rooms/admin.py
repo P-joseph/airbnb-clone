@@ -6,6 +6,7 @@ from . import models
 class ItemAdmin(admin.ModelAdmin):
 
     """ Item Admin Definition """
+
     list_display = (
         "name",
         "used_by",
@@ -19,6 +20,7 @@ class ItemAdmin(admin.ModelAdmin):
 class RoomAdmin(admin.ModelAdmin):
 
     """ Room Admin Definition """
+
     fieldsets = (
         (
             "Basic Info",

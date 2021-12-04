@@ -8,6 +8,7 @@ from . import models
 class CustomUserAdmin(UserAdmin):
 
     """ Custom User Admin """
+
     fieldsets = UserAdmin.fieldsets + (
         (
             "Custom Profile",

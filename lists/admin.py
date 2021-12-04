@@ -5,6 +5,8 @@ from . import models
 @admin.register(models.List)
 class ListAdmin(admin.ModelAdmin):
 
+    """ List Admin Definition """
+
     list_display = (
         "name",
         "user",
@@ -12,3 +14,5 @@ class ListAdmin(admin.ModelAdmin):
     )
 
     search_fields = ("name",)
+
+    filter_horizontal = ("rooms",)
