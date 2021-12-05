@@ -5,24 +5,8 @@ from . import models
 
 
 class RoomInline(admin.TabularInline):
+
     model = rooms_models.Room
-    fieldsets = (
-        (
-            "RoomInfo",
-            {
-                "fields":
-                    (
-                        "name",
-                        "price",
-                        "address",
-                        "guests",
-                        "beds",
-                        "bedrooms",
-                        "baths",
-                    )
-            }
-        ),
-    )
 
 
 @admin.register(models.User)
