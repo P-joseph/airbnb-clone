@@ -9,6 +9,7 @@ __pycache__/
 # Custom
 **/migrations/
 uploads/
+management/
 
 # Distribution / packaging
 .Python
