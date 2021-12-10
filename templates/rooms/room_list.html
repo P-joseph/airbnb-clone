@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
 
-{% block page_name %}
+{% block page_title %}
     Home
-{% endblock page_name %}
+{% endblock page_title %}
 
 {% block content %}
-
-    {{ now }}
 
     {% for room in rooms %}
         <h3>
