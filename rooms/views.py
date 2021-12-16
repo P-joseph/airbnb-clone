@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, View
 from django.shortcuts import render
 from django_countries import countries
 from django.core.paginator import Paginator
@@ -54,6 +54,7 @@ class SearchView(View):
 
                 filter_args = {}
 
+
                 if city != "Anywhere":
                     filter_args["city__startswith"] = city
 
@@ -83,13 +84,16 @@ class SearchView(View):
                 if superhost is True:
                     filter_args["host__superhost"] = True
 
+                rooms = models.Room.objects.filter(**filter_args)
                 for amenity in amenities:
-                    filter_args["amenities"] = amenity
+                    rooms = rooms.filter(amenities=amenity)
+                    # filter_args["amenities"] = amenity
 
                 for facility in facilities:
-                    filter_args["facilities"] = facility
+                    rooms = rooms.filter(amenities=facility)
+                    # filter_args["facilities"] = facility
 
-                qs = models.Room.objects.filter(**filter_args).order_by("-created")
+                qs = rooms.order_by("-created")
 
                 paginator = Paginator(qs, 10, orphans=5)
 
