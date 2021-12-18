@@ -24,5 +24,5 @@ class Command(BaseCommand):
             "Tissue_box",
         ]
         for a in amenities:
-            room_model.Amenity.objects.create(name=a)
+            room_models.Amenity.objects.create(name=a)
         self.stdout.write(self.style.SUCCESS("Amenities created!"))

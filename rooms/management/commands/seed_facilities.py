@@ -21,5 +21,5 @@ class Command(BaseCommand):
             "Gym"
         ]
         for f in facilities:
-            room_model.Facility.objects.create(name=f)
+            room_models.Facility.objects.create(name=f)
         self.stdout.write(self.style.SUCCESS(f"{len(facilities)} facilities created!"))
