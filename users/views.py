@@ -60,28 +60,62 @@ def github_login(request):
     redirect_uri = "http://127.0.0.1:8000/users/login/github/callback"
     return redirect(f"https://github.com/login/oauth/authorize?client_id={client_id}&redirect_uri={redirect_uri}&scope=read:user")
 
+
+class GithubException(Exception):
+    pass
+
 def github_callback(request):
-    client_id = os.environ.get("GH_ID")
-    client_secret = os.environ.get("GH_SECRET")
-    code = request.GET.get("code", None)
-    if code is not None:
-        result = requests.post(
-            f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
-            headers={"Accept": "application/json"}
-        )
-        result_json = result.json()
-        error = result_json.get("error", None)
-        if error is not None:
-            return redirect(reverse("users:login"))
-        else:
-            access_token = result_json.get("access_token")
-            api_request = requests.get(
-                "https://api.github.com/user",
-                headers={
-                    "Authorization": f"token {access_token}",
-                    "Accept": "application/json",
-                    },
+    try:
+        client_id = os.environ.get("GH_ID")
+        client_secret = os.environ.get("GH_SECRET")
+        code = request.GET.get("code", None)
+        if code is not None:
+            result = requests.post(
+                f"https://github.com/login/oauth/access_token?client_id={client_id}&client_secret={client_secret}&code={code}",
+                headers={"Accept": "application/json"}
             )
-            print(api_request.json())
-    else:
+            result_json = result.json()
+            error = result_json.get("error", None)
+            print(client_id)
+            print(client_secret)
+            print(code)
+            if error is not None:
+                raise GithubException()
+            else:
+                access_token = result_json.get("access_token")
+                profile_request = requests.get(
+                    "https://api.github.com/user",
+                    headers={
+                        "Authorization": f"token {access_token}",
+                        "Accept": "application/json",
+                        },
+                )
+                profile_json = profile_request.json()
+                username = profile_json.get('login', None)
+                if username is not None:
+                    name = profile_json.get('name')
+                    email = profile_json.get('email')
+                    bio = profile_json.get('bio')
+                    try:
+                        user = models.User.objects.get(email=email)
+                        if user.login_method != models.User.LOGIN_GITHUB:
+                            login(request, user)
+                            raise GithubException()
+                    except models.User.DoesNotExist:
+                        user = models.User.objects.create(
+                            email=email,
+                            first_name=name,
+                            username=email,
+                            bio=bio,
+                            login_method=models.User.LOGIN_GITHUB
+                        )
+                        user.set_unusable_password()
+                        user.save()
+                    login(request, user)
+                    return redirect(reverse("core:home"))
+                else:
+                    raise GithubException()
+        else:
+            raise GithubException()
+    except GithubException:
         return redirect(reverse("core:home"))
