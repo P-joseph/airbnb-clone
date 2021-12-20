@@ -76,9 +76,6 @@ def github_callback(request):
             )
             result_json = result.json()
             error = result_json.get("error", None)
-            print(client_id)
-            print(client_secret)
-            print(code)
             if error is not None:
                 raise GithubException()
             else:
@@ -96,6 +93,12 @@ def github_callback(request):
                     name = profile_json.get('name')
                     email = profile_json.get('email')
                     bio = profile_json.get('bio')
+                    if name is None:
+                        name = username
+                    if email is None:
+                        email = name
+                    if bio is None:
+                        bio = ""
                     try:
                         user = models.User.objects.get(email=email)
                         if user.login_method != models.User.LOGIN_GITHUB:
@@ -118,4 +121,5 @@ def github_callback(request):
         else:
             raise GithubException()
     except GithubException:
+        # send error message
         return redirect(reverse("core:home"))
