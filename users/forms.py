@@ -22,8 +22,4 @@ class LoginForm(forms.Form):
 
 class SignUpForm(UserCreationForm):
 
-    email = forms.EmailField()
-
-    class Meta:
-        model = models.User
-        fields = ("email", )
+    username = forms.EmailField(label="Email")
