@@ -13,14 +13,9 @@
 
         {% include 'partials/social_login.html' %}
 
-        <form method="POST" action="{% url "users:login" %}" class="w-full">
-            {% csrf_token %}
-            <input type="email" placeholder="Email" class="mb-3">
-            <input type="password" placeholder="Password" class="mb-3">
-            <button class="btn border-2 border-red-300 bg-red-400 text-white">Login</button>
-        </form>
+        {% include 'mixins/auth/auth_form.html' with form=form cta="Log in" %}
 
-        <div class="mt-5">
+        <div class="mt-1 -mb-3">
             <span class="mr-2 text-gray-500">Don't have an account?</span>
             <a href="{% url 'users:signup' %}" class="text-green-500 font-bold">Sign up</a>
         </div>

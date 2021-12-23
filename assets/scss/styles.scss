@@ -26,4 +26,17 @@ input{
     @apply outline-none border-green-400
   }
 }
+
+form {
+  .input {
+    &.has_error {
+      input {
+        @apply border-red-200 border-2;
+        &:focus {
+          @apply border-red-300 border-2;
+        }
+      }
+    }
+  }
+}
 @tailwind utilities;
