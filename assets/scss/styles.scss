@@ -20,6 +20,10 @@
   @apply text-center rounded py-5 font-bold mb-2 text-lg w-full;
 }
 
+.btn-link {
+  @apply btn border-2 border-red-300 bg-red-400 text-white text-center py-3 rounded-lg font-bold mb-2 text-lg w-full text-white;
+}
+
 input{
   @apply rounded py-5 font-bold mb-2 text-lg w-full text-left border border-gray-400 px-4;
   &:focus {
