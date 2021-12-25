@@ -24,11 +24,24 @@
   @apply btn border-2 border-red-300 bg-red-400 text-white text-center py-3 rounded-lg font-bold mb-2 text-lg w-full text-white;
 }
 
-input{
-  @apply rounded py-5 font-bold mb-2 text-lg w-full text-left border border-gray-400 px-4;
+input,
+textarea,
+select {
+  @apply rounded py-5 mb-2 font-bold text-lg w-full text-left border border-gray-400 px-4;
   &:focus {
     @apply outline-none border-green-400
   }
+}
+
+textarea,
+select {
+  resize: none;
+  font-weight: 300;
+  font-size: small;
+}
+
+textarea {
+  height: 100px;
 }
 
 form {
