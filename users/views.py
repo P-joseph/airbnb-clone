@@ -60,10 +60,9 @@ def complete_verification(request, key):
         user.email_verified = True
         user.email_secret = ""
         user.save()
-        # to do: add success message
+        messages.success(request, "Success to email verification")
     except models.User.DoesNotExist:
-        # to do: add error message
-        pass
+        messages.error(request, "Fail to email verification")
     return redirect(reverse("core:home"))
 
 def github_login(request):

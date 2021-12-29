@@ -11,7 +11,6 @@ from . import models, forms
 
 
 class HomeView(ListView):
-
     """ HomeView Definition """
 
     model = models.Room
@@ -22,11 +21,9 @@ class HomeView(ListView):
 
 
 class RoomDetail(DetailView):
-
     """ RoomDetail Definition """
 
     model = models.Room
-
 
 
 class SearchView(View):
@@ -54,7 +51,6 @@ class SearchView(View):
                 facilities = form.cleaned_data.get("facilities")
 
                 filter_args = {}
-
 
                 if city != "Anywhere":
                     filter_args["city__startswith"] = city
@@ -118,7 +114,6 @@ class SearchView(View):
 
 
 class EditRoomView(user_mixins.LoggedInOnlyView, UpdateView):
-
     model = models.Room
     template_name = "rooms/room_edit.html"
     fields = (
@@ -149,7 +144,6 @@ class EditRoomView(user_mixins.LoggedInOnlyView, UpdateView):
 
 
 class RoomPhotosView(user_mixins.LoggedInOnlyView, DetailView):
-
     model = models.Room
     template_name = "rooms/room_photos.html"
 
@@ -158,6 +152,7 @@ class RoomPhotosView(user_mixins.LoggedInOnlyView, DetailView):
         if room.host.pk != self.request.user.pk:
             raise Http404()
         return room
+
 
 @login_required
 def delete_photo(request, room_pk, photo_pk):
@@ -174,14 +169,27 @@ def delete_photo(request, room_pk, photo_pk):
     except models.Room.DoesNotExist:
         return redirect(reverse("core:home"))
 
+@login_required
+def delete_room(request, pk):
+    user = request.user
+    try:
+        room = models.Room.objects.get(pk=pk)
+        if room.host.pk != user.pk:
+            messages.error(request, "Can't delete that room")
+        else:
+            models.Room.objects.filter(pk=pk).delete()
+            messages.success(request, "Room Deleted")
+        return redirect(reverse("core:home"))
+    except models.Room.DoesNotExist:
+        return redirect(reverse("core:home"))
+
 
 class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateView):
-
     model = models.Photo
     template_name = "rooms/photo_edit.html"
     pk_url_kwarg = 'photo_pk'
     success_message = "Photo Updated"
-    fields = ("caption", )
+    fields = ("caption",)
 
     def get_success_url(self):
         room_pk = self.kwargs.get("room_pk")
@@ -195,10 +203,9 @@ class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateVie
 
 
 class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
-
     model = models.Photo
     template_name = "rooms/photo_create.html"
-    fields = ("caption", "file", )
+    fields = ("caption", "file",)
     form_class = forms.CreatePhotoForm
 
     def form_valid(self, form):
