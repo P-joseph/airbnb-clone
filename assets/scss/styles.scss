@@ -94,4 +94,8 @@ form {
     @apply bg-yellow-400;
   }
 }
+
+.border-section {
+  @apply border-b border-gray-300 pb-8 mt-8;
+}
 @tailwind utilities;
