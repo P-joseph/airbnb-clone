@@ -29,7 +29,7 @@
                     </span>
                 </div>
                 <a href="{{ room.host.get_absolute_url }}" class="flex flex-col items-center text-sm ml-10">
-                    {% include "mixins/user_avatar.html" with user=room.host %}
+                    {% include "mixins/user_avatar.html" with user=room.host h_and_w="w-14 h-14" text="text-2xl" %}
                     <span class="mt-2 text-gray-400">
                         {{ room.host.first_name }}
                     </span>
@@ -95,8 +95,10 @@
                 </div>
             </div>
         </div>
-        <div class="w-1/12">
-
+        <div class="w-1/4">
+            {% if room.host == user %}
+                <a href="{% url 'rooms:edit' room.pk %}" class="btn-link block">Edit Room</a>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
