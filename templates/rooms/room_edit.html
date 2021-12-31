@@ -14,11 +14,16 @@
         {% include 'mixins/room/room_form.html' with form=form cta="Update room" %}
 
         <div class="mt-3 -mb-3">
-            <a href="{% url "rooms:photos" room.pk %}" class="text-green-500 font-bold">Edit Photos</a>
+            <a href="{% url "rooms:photos" room.pk %}" class="text-green-500 font-bold">
+                Edit Photos
+            </a>
         </div>
 
         <div class="h-px w-5/6 bg-gray-400 mt-20"></div>
-        <a href="{% url "rooms:delete-room" room.pk %}" class="text-lg mt-5 text-red-600 font-bold">Delete Room</a>
+
+        <a href="{% url "rooms:delete-room" room.pk %}" class="text-lg mt-5 text-red-600 font-bold">
+            Delete Room
+        </a>
 
 
     </div>
