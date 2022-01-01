@@ -98,6 +98,33 @@
         <div class="w-1/4">
             {% if room.host == user %}
                 <a href="{% url 'rooms:edit' room.pk %}" class="btn-link block">Edit Room</a>
+            {% else %}
+                {% if not request.session.is_hosting %}
+                    {% for calendar in room.get_calendars %}
+                        <div class="mb-20">
+                            <span class="text-center font-bold text-xl block mb-8">{{ calendar.get_month }} / {{ calendar.year }}</span>
+                            <div class="cal-grid mb-4 font-bold">
+                                {% for day in calendar.day_names %}
+                                    <span>{{ day }}</span>
+                                {% endfor %}
+                            </div>
+                            <div class="cal-grid">
+                                {% for day in calendar.get_days %}
+                                    {% if day.number != 0 %}
+                                        {% if day.past %}
+                                            <span class="rounded bg-gray-200 w-full text-center text-gray-300 p-1">{{ day }}</span>
+                                        {% else %}
+                                            <span class="bg-gray-100 w-full text-center rounded text-gray-500 p-1 hover:bg-green-400 hover:text-white cursor-pointer">{{ day }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span></span>
+                                    {% endif %}
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
             {% endif %}
         </div>
     </div>
