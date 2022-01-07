@@ -2,7 +2,6 @@ import datetime
 from django.db import models
 from django.utils import timezone
 from core import models as core_models
-from . import managers
 
 
 class BookedDay(core_models.TimeStampedModel):
@@ -36,7 +35,6 @@ class Reservation(core_models.TimeStampedModel):
     check_out = models.DateField()
     guest = models.ForeignKey("users.User", related_name="reservations", on_delete=models.CASCADE)
     room = models.ForeignKey("rooms.Room", related_name="reservations", on_delete=models.CASCADE)
-    objects = managers.CustomReservationManager()
 
     def __str__(self):
         return f"{self.room} - {self.check_in}"
@@ -49,7 +47,11 @@ class Reservation(core_models.TimeStampedModel):
 
     def is_finished(self):
         now = timezone.now().date()
-        return self.check_out < now
+        is_finished = self.check_out < now
+        if is_finished:
+            BookedDay.objects.filter(reservation=self).delete()
+
+        return is_finished
 
     is_finished.boolean = True
 
