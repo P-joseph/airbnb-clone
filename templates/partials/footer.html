@@ -1,3 +1,19 @@
+{% load i18n %}
+
 <footer class="container mx-auto text-center py-5 border-t font-bold text-gray-400">
-    &copy; 2021 Airbnb, Inc. All rights reserved. Please don't copy us.
+    <div class="flex flex-col">
+        <span>
+            {% trans "Please don't copy us." %}
+        </span>
+        <span>
+            &copy; 2021 Airbnb, Inc. {% trans "All rights reserved." %}
+        </span>
+    </div>
+    <div class="flex mt-10">
+        <select class="w-1/6" id="js-lang">
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="kr">Korean</option>
+        </select>
+    </div>
 </footer>
