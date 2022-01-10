@@ -16,93 +16,93 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: templates/base.html:25
 msgid "Search by City"
-msgstr "Buscar por Ciudad"
+msgstr "도시 검색"
 
 #: templates/partials/footer.html:6
 msgid "Please don't copy us."
-msgstr "Por favor no nos copies."
+msgstr "무단 복제를 하지 말아주세요."
 
 #: templates/partials/footer.html:9
 msgid "All rights reserved."
-msgstr "Todos los derechos reservados."
+msgstr "판권 소유"
 
 #: templates/rooms/room_list.html:28
 #, python-format
 msgid "Page %(current_page)s of %(total_pages)s"
-msgstr "Página %(current_page)s de %(total_pages)s"
+msgstr "총 %(total_pages)s 장 중에 %(current_page)s 장"
 
 #: users/mixins.py:14
 msgid "Can't go there"
-msgstr "no puedo ir allí"
+msgstr "그 곳에 갈 수 없습니다"
 
 #: users/mixins.py:20
 msgid "Page not found"
-msgstr "Página no encontrada"
+msgstr "페이지를 찾을 수 없습니다"
 
 #: users/models.py:21
 msgid "Male"
-msgstr "Hombre"
+msgstr "남성"
 
 #: users/models.py:22
 msgid "Female"
-msgstr "Mujer"
+msgstr "여성"
 
 #: users/models.py:23
 msgid "Other"
-msgstr "Otro"
+msgstr "기타"
 
 #: users/models.py:30
 msgid "English"
-msgstr "Inglés"
+msgstr "영어"
 
 #: users/models.py:31
 msgid "Korean"
-msgstr "Coreano"
+msgstr "한국어"
 
 #: users/models.py:52
 msgid "avatar"
-msgstr "avatar"
+msgstr "아바타"
 
 #: users/models.py:53
 msgid "gender"
-msgstr "género"
+msgstr "성별"
 
 #: users/models.py:54
 msgid "bio"
-msgstr "biografía"
+msgstr "소개"
 
 #: users/models.py:55
 msgid "birthdate"
-msgstr "fecha de nacimiento"
+msgstr "생년월일"
 
 #: users/models.py:56
 msgid "language"
-msgstr "language"
+msgstr "언어"
 
 #: users/models.py:57
 msgid "currency"
-msgstr "divisa"
+msgstr "통화"
 
 #: users/models.py:58
 msgid "superhost"
-msgstr "superanfitrión"
+msgstr "슈퍼호스트"
 
 #: users/models.py:59
 msgid "email_verified"
-msgstr "correo_verificado"
+msgstr "이메일_인증"
 
 #: users/models.py:60
 msgid "email_secret"
-msgstr "correo_secreto"
+msgstr "이메일_인증번호"
 
 #: users/models.py:61
 msgid "login_method"
-msgstr "login_method"
+msgstr "로그인_방법"
 
 #: users/models.py:75
 msgid "Verify Airbnb Account"
-msgstr "Verificar Cuenta de Airbnb"
+msgstr "에어비엔비 계정 확인"
