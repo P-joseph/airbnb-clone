@@ -31,7 +31,7 @@
                 </div>
                 <div class="ml-5 flex flex-col">
                     <span class="font-bold mb-px">Contact your Airbnb Host</span>
-                    <a href="#" class="font-bold text-green-500">Send a Message</a>
+                    <a href="{% url "conversations:go" reservation.room.host.pk reservation.guest.pk  %}" class="font-bold text-green-500">Send a Message</a>
                 </div>
             </div>
 
