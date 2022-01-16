@@ -1,10 +1,11 @@
 import datetime
 from django.http import Http404
-from django.views.generic import View
+from django.views.generic import View, DetailView, TemplateView
 from django.contrib import messages
 from django.shortcuts import render, redirect, reverse
 from rooms import models as room_models
 from reviews import forms as reviews_forms
+from users import models as user_models
 from . import models
 
 
@@ -53,3 +54,13 @@ def edit_reservation(request, pk, verb):
     reservation.save()
     messages.success(request, "Reservation Updated")
     return redirect(reverse("reservations:detail", kwargs={"pk": reservation.pk}))
+
+
+class ReservationManagementView(TemplateView):
+    template_name = "reservations/management.html"
+
+    def get(self, *args, **kwargs):
+        pk = kwargs.get("pk")
+        host = user_models.User.objects.get_or_none(pk=pk)
+        rooms = room_models.Room.objects.filter(host=host)
+        return render(self.request, "reservations/management.html", {"rooms": rooms})
