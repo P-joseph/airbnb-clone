@@ -59,8 +59,13 @@ def edit_reservation(request, pk, verb):
 class ReservationManagementView(TemplateView):
     template_name = "reservations/management.html"
 
-    def get(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk")
-        host = user_models.User.objects.get_or_none(pk=pk)
-        rooms = room_models.Room.objects.filter(host=host)
-        return render(self.request, "reservations/management.html", {"rooms": rooms})
+        try:
+            is_hosting = request.session['is_hosting']
+        except KeyError:
+            is_hosting = False
+        user = user_models.User.objects.get_or_none(pk=pk)
+        rooms = room_models.Room.objects.filter(host=user)
+
+        return render(self.request, "reservations/management.html", {"rooms": rooms, "is_hosting": is_hosting})
