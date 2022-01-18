@@ -7,34 +7,70 @@
 
 {% block content %}
 
-    <h3 class="mb-12 text-2xl text-center text-gray-500">Reservations Management</h3>
+    <h3 class="mb-12 text-2xl text-center text-gray-500">My Room Reservations</h3>
     <div class="container w-1/2 mx-auto pb-10 flex flex-col">
-        {% if rooms %}
-            {% for room in rooms %}
-                {% for reservation in room.reservations.all %}
-                    <div class="border mb-2 rounded-lg flex">
-                        <div class="w-48 h-48 bg-cover bg-center rounded-lg my-2 ml-2"
-                             style="background-image: url({{ room.first_photo }});"></div>
-                        <div class="flex flex-col ml-12 text-gray-400 font-serif mt-7">
-                            <span class="mb-4 border text-center text-lg{% if reservation.status == "pending" %} text-yellow-400 {% elif reservation.status == "canceled" %} text-red-500 {% else %} text-green-500 {% endif %}">{{ reservation.get_status_display }}</span>
-                            <span class="w-64 text-2xl block truncate">{{ room.name }}</span>
-                            <span class="">{{ reservation.check_in }} - {{ reservation.check_out }}</span>
-                            <span class="text-lg mt-6">{{ reservation.guest }}</span>
+        <div class="border rounded">
+            {% if rooms %}
+                {% for room in rooms %}
+                    {% for reservation in room.reservations.all %}
+                        <div class="flex border items-center truncate">
+                            <div>
+                                <div class="mx-2 my-2 w-36 h-36 bg-cover bg-center rounded-lg"
+                                     style="background-image: url({{ room.first_photo }});"></div>
+                            </div>
+                            <div class="flex flex-col text-gray-500 mx-5 w-1/3">
+                                <span class="text-lg font-bold truncate">{{ room.name }}</span>
+                                <span>{{ reservation.guest.first_name }}</span>
+                                <span class="mb-5">{{ reservation.check_in }} - {{ reservation.check_out }}</span>
+                                <span class="truncate w-1/3 text-center justify-center border rounded mb-4 text-lg{% if reservation.status == "pending" %} text-yellow-400 {% elif reservation.status == "canceled" %} text-red-500 {% else %} text-green-500 {% endif %}">{{ reservation.get_status_display }}</span>
+                            </div>
+                            <div class="flex flex-col ml-20 w-1/3">
+                                {% if reservation.status == "pending" %}
+                                    <a href="{% url "reservations:edit" reservation.pk "confirm" %}" class="btn-link border-green-300 bg-green-500">Confirm</a>
+                                    <a href="{% url "reservations:edit" reservation.pk "cancel" %}" class="btn-link">Cancel</a>
+                                {% endif %}
+                            </div>
                         </div>
-                        <div class="mx-auto my-auto">
-                            <button class="btn-link w-40">See detail</button>
-                        </div>
-                    </div>
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        {% else %}
-            <div class="border mb-2 rounded-lg flex h-32 text-3xl items-center justify-center text-gray-400">
-                There are no reservations.
-            </div>
-        {% endif %}
+            {% else %}
+                <div class="text-center my-10 text-red-400">
+                    <span class="text-2xl font-bold">There are no rooms reserved.</span>
+                </div>
+            {% endif %}
+        </div>
 
         <span class="border-t my-10"></span>
 
+        <h3 class="mb-12 text-2xl text-center text-gray-500">My Reservations</h3>
+
+        <div class="border rounded">
+            {% if reservations %}
+                {% for reservation in reservations %}
+                    <div class="flex border items-center truncate">
+                        <div>
+                            <div class="mx-2 my-2 w-36 h-36 bg-cover bg-center rounded-lg"
+                                 style="background-image: url({{ reservation.room.first_photo }});"></div>
+                        </div>
+                        <div class="flex flex-col text-gray-500 mx-5 w-1/3">
+                            <span class="text-lg font-bold truncate">{{ reservation.room.name }}</span>
+                            <span>{{ reservation.room.host.first_name }}</span>
+                            <span class="mb-5">{{ reservation.check_in }} - {{ reservation.check_out }}</span>
+                            <span class="truncate w-1/3 text-center justify-center border rounded mb-4 text-lg{% if reservation.status == "pending" %} text-yellow-400 {% elif reservation.status == "canceled" %} text-red-500 {% else %} text-green-500 {% endif %}">{{ reservation.get_status_display }}</span>
+                        </div>
+                        <div class="flex flex-col ml-20 w-1/3">
+                            {% if reservation.status == "pending" %}
+                                <a href="{% url "reservations:edit" reservation.pk "cancel" %}" class="btn-link">Cancel</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-center my-10 text-red-400">
+                    <span class="text-2xl font-bold">There are no rooms reserved.</span>
+                </div>
+            {% endif %}
+        </div>
     </div>
 
 

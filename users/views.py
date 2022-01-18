@@ -262,7 +262,6 @@ def switch_hosting(request):
 def switch_language(request):
     lang = request.GET.get("lang", None)
     if lang is not None:
-        # translation.activate(lang)
         response =  HttpResponse(200)
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
     return response
