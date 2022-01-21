@@ -160,7 +160,7 @@ prometheus-client @ file:///tmp/build/80754af9/prometheus_client_1618088486455/w
 prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1616415428029/work
 psutil @ file:///tmp/build/80754af9/psutil_1612298023621/work
 psycopg2-binary==2.9.2
-psycopg==2.8.4
+psycopg2==2.8.4
 ptyprocess @ file:///tmp/build/80754af9/ptyprocess_1609355006118/work/dist/ptyprocess-0.7.0-py2.py3-none-any.whl
 py @ file:///tmp/build/80754af9/py_1607971587848/work
 pycodestyle @ file:///home/ktietz/src/ci_mi/pycodestyle_1612807597675/work
