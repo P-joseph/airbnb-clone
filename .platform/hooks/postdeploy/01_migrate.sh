@@ -1,9 +1,16 @@
 #!/bin/bash
 
-source /var/app/venv/*/bin/activate
-cd /var/app/staging
+source "$PYTHONPATH/activate" && {
 
-python manage.py makemigrations
-python manage.py migrate
-python manage.py createfirstsuperuser
-python manage.py collectstatic --noinput
+    if [[ $EB_IS_COMMAND_LEADER == "true" ]];
+    then
+        # log which migrations have already been applied
+        python manage.py showmigrations;
+
+        # migrate
+        python manage.py migrate --noinput;
+    else
+        echo "this instance is NOT the leader";
+    fi
+
+}
