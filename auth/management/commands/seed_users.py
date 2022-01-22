@@ -5,11 +5,11 @@ from users import models as user_models
 
 class Command(BaseCommand):
 
-    help = "This command creates many users"
+    help = "This command creates many auth"
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "--number", default=2, type=int, help="How many users do you want to create ?"
+            "--number", default=2, type=int, help="How many auth do you want to create ?"
         )
 
     def handle(self, *args, **options):
