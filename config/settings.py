@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 # Application definition
 
 DJANGO_APPS = [
+    'apps.user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
+    'apps.user'
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
@@ -55,7 +57,7 @@ THIRD_PARTY_APPS = [
     "django_seed",
 ]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
+INSTALLED_APPS = list(set(DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS))
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
