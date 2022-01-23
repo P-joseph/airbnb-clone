@@ -32,7 +32,6 @@ ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 # Application definition
 
 DJANGO_APPS = [
-    'users',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +41,6 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'users'
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
