@@ -14,6 +14,7 @@ requests = "*"
 awsebcli = "*"
 pipenv-to-requirements = "*"
 config = "*"
+django-environ = "*"
 
 [dev-packages]
 flake8 = "*"
