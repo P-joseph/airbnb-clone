@@ -32,7 +32,7 @@ ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 # Application definition
 
 DJANGO_APPS = [
-    'apps.user',
+    'airbnb-clone.user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +42,7 @@ DJANGO_APPS = [
 ]
 
 PROJECT_APPS = [
-    'apps.user'
+    'airbnb-clone.user'
     "core.apps.CoreConfig",
     "users.apps.UsersConfig",
     "rooms.apps.RoomsConfig",
