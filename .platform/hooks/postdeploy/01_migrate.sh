@@ -11,6 +11,7 @@ python manage.py seed_rooms --number 30
 python manage.py createsuperuser
 python manage.py migrate --run --syncdb
 python manage.py makemigrations user
+python manage.py makemigrations web
 python manage.py makemigrations
 python manage.py migrate
 django-admin.py migrate
