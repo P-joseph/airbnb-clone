@@ -27,11 +27,9 @@ source "$PYTHONPATH/activate" && {
 
         # migrate
         python manage.py migrate --noinput;
+        python manage.py makemigrations;
     else
         echo "this instance is NOT the leader";
     fi
 
 }
-
-python manage.py makemigrations user
-python manage.py migrate
