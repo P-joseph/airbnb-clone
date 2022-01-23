@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8eba93c85a169677386506956e4d1567d5ddbcd49b7add538b1b62a55b58e0b9"
+            "sha256": "1cc41fc0f2d7d00076be1f4994b72598e3a450ec6c0c20c29101835b36f76c06"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -264,6 +264,14 @@
                 "sha256:49b3a825280bd66b3aa83585ef59c4a8c82f2c8a522dbe754a8bc8d08c85c491"
             ],
             "version": "==0.6.2"
+        },
+        "ec2instanceconnectcli": {
+            "hashes": [
+                "sha256:55a0b20a71214b1d48ddb368e7ba742177fddbeb4ed6d4fb292517cced48c885",
+                "sha256:cb393e5d047063e844177c1cdbef66c01c20060e7d1f43ccb22ffa5a3df9ccd2"
+            ],
+            "index": "pypi",
+            "version": "==1.0.2"
         },
         "faker": {
             "hashes": [

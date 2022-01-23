@@ -15,6 +15,7 @@ awsebcli = "*"
 pipenv-to-requirements = "*"
 config = "*"
 django-environ = "*"
+ec2instanceconnectcli = "*"
 
 [dev-packages]
 flake8 = "*"
