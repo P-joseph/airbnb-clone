@@ -19,6 +19,7 @@ ec2instanceconnectcli = "*"
 sentry-sdk = "*"
 django-storages = "*"
 boto3 = "*"
+awscli = "*"
 
 [dev-packages]
 flake8 = "*"
