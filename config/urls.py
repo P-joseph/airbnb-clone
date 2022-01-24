@@ -16,7 +16,7 @@ urlpatterns = [
     path("reviews/", include("reviews.urls", namespace="reviews")),
     path("lists/", include("lists.urls", namespace="lists")),
     path("conversations/", include("conversations.urls", namespace="conversations")),
-    path(os.environ["DJANGO_ADMIN"], admin.site.urls),
+    path(os.environ.get("DJANGO_ADMIN", "admin/"), admin.site.urls),
     path('sentry-debug/', trigger_error),
 ]
 
