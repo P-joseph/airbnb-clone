@@ -3,4 +3,4 @@
 source /var/app/venv/*/bin/activate
 cd /var/app/staging
 
-python manage.py compilemessages
+python3 manage.py compilemessages
