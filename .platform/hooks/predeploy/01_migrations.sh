@@ -4,7 +4,14 @@ source /var/app/venv/*/bin/activate
 cd /var/app/staging
 
 python manage.py makemigrations
-python manage.py migrate --fake
+python manage.py migrate config
+python manage.py migrate conversations
+python manage.py migrate core
+python manage.py migrate listsq
+python manage.py migrate reservations
+python manage.py migrate reviews
+python manage.py migrate rooms
+python manage.py migrate users
 python manage.py createsuperuser
 python manage.py seed_amenities
 python manage.py seed_facilities
