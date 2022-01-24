@@ -17,6 +17,8 @@ config = "*"
 django-environ = "*"
 ec2instanceconnectcli = "*"
 sentry-sdk = "*"
+django-storages = "*"
+boto3 = "*"
 
 [dev-packages]
 flake8 = "*"
