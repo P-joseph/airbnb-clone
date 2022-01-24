@@ -8,7 +8,6 @@ from django.utils.html import strip_tags
 from django.shortcuts import reverse
 from django.template.loader import render_to_string
 from core import managers as core_managers
-from . import models as user_models
 
 
 class User(AbstractUser):
