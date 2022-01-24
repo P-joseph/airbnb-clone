@@ -19,7 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET")
+SECRET_KEY = os.environ["DJANGO_SECRET"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -100,10 +100,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'HOST': os.environ["RDS_HOST"],
             'NAME': os.environ["RDS_NAME"],
             'USER': os.environ["RDS_USER"],
             'PASSWORD': os.environ["RDS_PASSWORD"],
+            'HOST': os.environ["RDS_HOST"],
             'PORT': "5432",
         }
     }
@@ -158,8 +158,8 @@ MEDIA_URL = "/media/"
 
 EMAIL_HOST = "smtp.mailgun.org"
 EMAIL_PORT = "587"
-EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
-EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
+EMAIL_HOST_USER = os.environ["MAILGUN_USERNAME"]
+EMAIL_HOST_PASSWORD = os.environ["MAILGUN_PASSWORD"]
 EMAIL_FORM = "joseph_server@sandbox8783e347115444edb2b9013f98564c3b.mailgun.org"
 
 # Auth
