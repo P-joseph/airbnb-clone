@@ -8,6 +8,7 @@ from django.utils.html import strip_tags
 from django.shortcuts import reverse
 from django.template.loader import render_to_string
 from core import managers as core_managers
+from . import models as user_models
 
 
 class User(AbstractUser):
@@ -50,7 +51,7 @@ class User(AbstractUser):
         (LOGIN_KAKAO, "Kakao")
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
+    user = models.ForeignKey(user_models.User, on_delete=models.CASCADE, related_name="user")
     avatar = models.ImageField(_("avatar"), upload_to="avatars", blank=True)
     gender = models.CharField(_("gender"), choices=GENDER_CHOICES, max_length=10,blank=True)
     bio = models.TextField(_("bio"), blank=True)
