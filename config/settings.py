@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -171,3 +173,12 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 LANGUAGE_CODE = "en"
 
 LANGUAGE_COOKIE_NAME = "django_language"
+
+# Sentry
+
+if not DEBUG:
+    sentry_sdk.init(
+        dsn=os.environ["SENTRY_URL"],
+        integrations=[DjangoIntegration()],
+        send_default_pii=True,
+    )

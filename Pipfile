@@ -16,6 +16,7 @@ pipenv-to-requirements = "*"
 config = "*"
 django-environ = "*"
 ec2instanceconnectcli = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 flake8 = "*"
