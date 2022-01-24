@@ -2,4 +2,4 @@
 
 source /var/app/venv/*/bin/activate
 
-django-admin collectstatic --noinput
+python manage.py collectstatic --noinput
