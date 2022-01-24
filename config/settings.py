@@ -99,7 +99,7 @@ if not DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.postgresql',
+            'ENGINE': 'django.db.backends.postgres',
             'HOST': os.environ["RDS_HOST"],
             'NAME': os.environ["RDS_NAME"],
             'USER': os.environ["RDS_USER"],
