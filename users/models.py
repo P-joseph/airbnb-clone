@@ -50,7 +50,6 @@ class User(AbstractUser):
         (LOGIN_KAKAO, "Kakao")
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user")
     avatar = models.ImageField(_("avatar"), upload_to="avatars", blank=True)
     gender = models.CharField(_("gender"), choices=GENDER_CHOICES, max_length=10,blank=True)
     bio = models.TextField(_("bio"), blank=True)
