@@ -24,11 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["DJANGO_SECRET"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# bool(os.environ.get("DEBUG"))
+DEBUG = bool(os.environ.get("DEBUG"))
 
 ALLOWED_HOSTS = ["http://airbnb-clone.eba-2kj8pb3x.ap-northeast-2.elasticbeanstalk.com"]
-SITE_ID = 1
 
 # Application definition
 
@@ -94,7 +92,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if not DEBUG:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
