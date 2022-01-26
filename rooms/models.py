@@ -67,6 +67,7 @@ class Room(core_models.TimeStampedModel):
 
     """ Room Model Definition """
 
+    id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     name = models.CharField(max_length=140)
     description = models.TextField()
     country = CountryField()

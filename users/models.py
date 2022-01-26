@@ -50,6 +50,7 @@ class User(AbstractUser):
         (LOGIN_KAKAO, "Kakao")
     )
 
+    id = models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
     avatar = models.ImageField(_("avatar"), upload_to="avatars", blank=True)
     gender = models.CharField(_("gender"), choices=GENDER_CHOICES, max_length=10,blank=True)
     bio = models.TextField(_("bio"), blank=True)
