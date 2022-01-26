@@ -180,7 +180,7 @@ LANGUAGE_COOKIE_NAME = "django_language"
 
 # Sentry
 
-if not DEBUG:
+if DEBUG:
 
     DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
     STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
