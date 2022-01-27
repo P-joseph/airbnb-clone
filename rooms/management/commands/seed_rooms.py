@@ -42,7 +42,7 @@ class Command(BaseCommand):
                 room_models.Photo.objects.create(
                     caption=seeder.faker.sentence(),
                     room=room,
-                    file=f"{os.environ['AWS_S3_CUSTOM_DOMAIN']}/room_photos/{random.randint(1, 31)}.webp"
+                    file=f"http://{os.environ['AWS_S3_CUSTOM_DOMAIN']}/room_photos/{random.randint(1, 31)}.webp"
                 )
             for a in amenities:
                 magic_number = random.randint(0, 15)
