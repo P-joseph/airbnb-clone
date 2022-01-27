@@ -110,7 +110,7 @@ class Room(core_models.TimeStampedModel):
     def first_photo(self):
         try:
             photo = self.photos.all()[:1]
-            return photo
+            return photo.file.url
         except ValueError:
             return None
 
