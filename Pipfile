@@ -20,6 +20,7 @@ sentry-sdk = "*"
 django-storages = "*"
 boto3 = "*"
 awscli = "*"
+djangorestframework = "*"
 
 [dev-packages]
 flake8 = "*"

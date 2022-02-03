@@ -184,7 +184,11 @@ LANGUAGE_COOKIE_NAME = "django_language"
 if DEBUG:
 
     DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
+    AWS_PUBLIC_MEDIA_LOCATION = "media/public"
+
     STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
+    AWS_PRIVATE_MEDIA_LOCATION = "media/static"
+
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
     AWS_STORAGE_BUCKET_NAME = "airbnb-clone-joseph"

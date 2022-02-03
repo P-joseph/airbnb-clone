@@ -1,9 +1,13 @@
+import os
+
 from django.db import models
 from django.urls import reverse
 from django_countries.fields import CountryField
+from django.http import HttpResponse
 from core import models as core_models
 from cal import Calendar
 import datetime
+import boto3
 
 
 class AbstractItem(core_models.TimeStampedModel):
