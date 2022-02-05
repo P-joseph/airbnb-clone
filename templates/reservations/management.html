@@ -12,7 +12,7 @@
         <div class="border rounded">
             {% if rooms %}
                 {% for room in rooms %}
-                    {% if room.reservations %}
+                    {% if room.reservations.all %}
                         {% for reservation in room.reservations.all %}
                             <div class="flex border items-center truncate">
                                 <div>
