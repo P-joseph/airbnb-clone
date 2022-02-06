@@ -11,6 +11,8 @@ __pycache__/
 uploads/
 node_modules/
 .git-old
+.platform/hooks/predeploy/04_createsu.sh
+.platform/hooks/predeploy/05_createseed.sh
 
 # Distribution / packaging
 .Python
