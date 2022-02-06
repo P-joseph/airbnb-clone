@@ -8,17 +8,16 @@
 {% endblock %}
 
 {% block content %}
-        <h2 class="mx-auto font-2xl font-bold">Search</h2>
+        <div class="w-1/3 mx-auto flex flex-col">
+            <form method="get" action="{% url "rooms:search" %}">
+                {{ form.as_p }}
+                <button class="btn-link">Search</button>
+            </form>
 
-        <form class="w-1/3 mx-auto" method="get" action="{% url "rooms:search" %}">
-            {{ form.as_p }}
-            <button>Search</button>
-        </form>
-
-        <h3>Results</h3>
-        {% for room in rooms %}
-            <h3>{{ room.name }}</h3>
-        {% endfor %}
-    </div>
+            <h3>Results</h3>
+            {% for room in rooms %}
+                <h3>{{ room.name }}</h3>
+            {% endfor %}
+        </div>
 
 {% endblock %}
