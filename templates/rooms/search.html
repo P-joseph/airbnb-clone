@@ -10,7 +10,7 @@
 {% block content %}
         <div class="w-1/3 mx-auto flex flex-col">
             <form method="get" action="{% url "rooms:search" %}">
-                {{ form.as_p }}
+                <span class="flex mx-auto">{{ form.as_p }}</span>
                 <button class="btn-link">Search</button>
             </form>
 
