@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-if not DEBUG:
+if DEBUG:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -179,7 +179,7 @@ LANGUAGE_COOKIE_NAME = "django_language"
 
 # Sentry
 
-if DEBUG:
+if not DEBUG:
 
     DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
     STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
