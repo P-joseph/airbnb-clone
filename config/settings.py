@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["DJANGO_SECRET"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ.get("DEBUG"))
+DEBUG = bool(os.environ["DEBUG"])
 
 ALLOWED_HOSTS = [".elasticbeanstalk.com", "localhost"]
 
@@ -183,12 +183,12 @@ if not DEBUG:
 
     DEFAULT_FILE_STORAGE = 'config.custom_storages.UploadStorage'
     STATICFILES_STORAGE = 'config.custom_storages.StaticStorage'
-    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
-    AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+    AWS_ACCESS_KEY_ID = os.environ["AWS_ACCESS_KEY_ID"]
+    AWS_SECRET_ACCESS_KEY = os.environ["AWS_SECRET_ACCESS_KEY"]
     AWS_STORAGE_BUCKET_NAME = "airbnb-clone-joseph"
     AWS_DEFAULT_ACL = "public-read"
     AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
-    AWS_S3_CUSTOM_DOMAIN = os.environ.get("AWS_S3_CUSTOM_DOMAIN")
+    AWS_S3_CUSTOM_DOMAIN = os.environ["AWS_S3_CUSTOM_DOMAIN"]
     STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
 
     sentry_sdk.init(
